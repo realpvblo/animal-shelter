@@ -5,9 +5,9 @@
 </head>
 <body>
 <a href="welcome.php" class="fixed-button">
-    <span>&rarr;</span>
+    <!-- <span>&rarr;</span> -->
   </a>
-    <h2>Usuń zwierzę</h2>
+    <h2>Usuń zwierzę</h2> 
     
     <?php
     // Połączenie z bazą danych (przykładowe dane)

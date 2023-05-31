@@ -12,69 +12,55 @@
     <link href="assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+   <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="css/animate.css">
+
+<link rel="stylesheet" href="css/owl.carousel.min.css">
+<link rel="stylesheet" href="css/owl.theme.default.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+
+<link rel="stylesheet" href="css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="css/jquery.timepicker.css">
+
+<link rel="stylesheet" href="css/flaticon.css">
+<link rel="stylesheet" href="css/style.css">
+
 </head>
 <body>
      
-           
+<div class="wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 d-flex justify-content-md-end">
+						<div class="social-media">
+			    		<p class="mb-0 d-flex">
+							<!-- login -->
+							<a href="login.php" class="d-flex align-items-center justify-content-center"></a>
+			    		</p>
+		        </div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    	<a class="navbar-brand" href="#"><span class="flaticon-pawprint-1 mr-2"></span>Panel Admina</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item"><a href="logout.php" class="nav-link">Wyloguj</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
           
-    <div id="wrapper">
-         <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="adjust-nav">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">
-                        <img src="assets/img/logo.png" />
-
-                    </a>
-                    
-                </div>
-              <!--  adadadw -->
-                <span class="logout-spn" >
-                  <a href="#" style="color:#fff;">LOGOUT</a>   
-
-                </span>
-            </div>
-        </div>
-        <!-- /. NAV TOP  -->
-        <!-- <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
-                 
-
-
-                    <li class="active-link">
-                        <a href="index.html" ><i class="fa fa-desktop "></i>Strona Główna </a>
-                    </li>
-                   
-
-                    <li>
-                        <a href="dodajzwierze.php"><i class="fa fa-table "></i>Dodaj Zwierzę </a>
-                    </li>
-                    <li>
-                        <a href="zaadoptuj.php"><i class="fa fa-edit "></i>Zaadoptuj  </a>
-                    </li>
-
-
-                    <li>
-                        <a href="usunzwierze.php"><i class="fa fa-qrcode "></i>Usuń Zwierzę</a>
-                    </li>
-                    <li>
-                        <a href="przegladaj.php"><i class="fa fa-bar-chart-o"></i>Przeglądaj</a>
-                    </li>
-                    <li>
-                        <a href="Adopcje.php"><i class="fa fa-bar-chart-o"></i>Adopcje</a>
-                    </li>
-
-            
-                    
-                </ul>
-                            </div>
-
-        </nav> -->
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
             <div id="page-inner">
@@ -88,7 +74,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <div class="alert alert-info">
-                             <strong>Welcome Jhon Doe ! </strong> You Have No pending Task For Today.
+                             <strong>Witaj Adminie! </strong> 
                         </div>
                        
                     </div>
@@ -98,7 +84,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="index.html" >
-                    <i class="fa fa-circle-o-notch fa-5x"></i>
+                    <i class="fa fa-desktop fa-5x"></i>
                       <h4>Strona główna</h4>
                       </a>
                       </div>
@@ -109,7 +95,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="dodajzwierze.php" >
- <i class="fa fa-envelope-o fa-5x"></i>
+ <i class="fa fa-plus fa-5x"></i>
                       <h4>Dodaj zwierzę</h4>
                       </a>
                       </div>
@@ -119,7 +105,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="zaadoptuj.php" >
- <i class="fa fa-lightbulb-o fa-5x"></i>
+ <i class="fa fa-heart-o fa-5x"></i>
                       <h4>Zaadoptuj</h4>
                       </a>
                       </div>
@@ -129,7 +115,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="usunzwierze.php" >
- <i class="fa fa-users fa-5x"></i>
+ <i class="fa fa-times fa-5x"></i>
                       <h4>Usuń Zwierzę</h4>
                       </a>
                       </div>
@@ -139,7 +125,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="przegladaj.php" >
- <i class="fa fa-key fa-5x"></i>
+ <i class="fa fa-search fa-5x"></i>
                       <h4>Przeglądaj</h4>
                       </a>
                       </div>
@@ -149,7 +135,7 @@
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
                       <div class="div-square">
                            <a href="Adopcje.php" >
- <i class="fa fa-comments-o fa-5x"></i>
+ <i class="fa fa-list-ul fa-5x"></i>
                       <h4>Adopcje</h4>
                       </a>
                       </div>
