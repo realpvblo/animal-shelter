@@ -1,0 +1,4 @@
+#ignoruj ppliki DS_Store
+global-exclude .DS_Store
+#igonruj plik Zaadpotuj.php
+exclude Zaadpotuj.php
