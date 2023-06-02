@@ -4,7 +4,7 @@
 
 session_start();
 
-if(!isset($_SESSION['admin_name'])){
+if (!isset($_SESSION['admin_name'])) {
    header('location:login_form.php');
 }
 
@@ -13,7 +13,7 @@ if(!isset($_SESSION['admin_name'])){
 
 //    echo $select2
 
-$mysqli = new mysqli ("localhost", "root", "root","schronisko");
+$mysqli = new mysqli("localhost", "root", "", "schronisko");
 //        $sql = "SELECT * FROM rezerwacja";
 //        if ($result = $mysqli -> query($sql))
 //        {
@@ -36,11 +36,12 @@ $mysqli = new mysqli ("localhost", "root", "root","schronisko");
 $sql = " SELECT * FROM rezerwacja ";
 $result = $mysqli->query($sql);
 $mysqli->close();
-       
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,9 +58,10 @@ $mysqli->close();
    <link rel="stylesheet" href="css/style.css">
 
 </head>
+
 <body>
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+   <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
          <a class="navbar-brand" href="index.php">
             <img src="img/logoCarWash.png" alt="" width="30" height="24">
@@ -84,48 +86,48 @@ $mysqli->close();
       </div>
    </nav>
 
-<div class="container">
+   <div class="container">
 
-   <div class="content">
-      <h3>cześć, <span>admin</span></h3>
-      <h1>Witaj <span><?php echo $_SESSION['admin_name'] ?></span></h1>
-      <p>to jest strona administracyjna</p>
-      <a href="login_form.php" class="btn">Zaloguj</a>
-      <a href="register_form.php" class="btn">Zarejestruj</a>
-      <a href="logout.php" class="btn">Wyloguj</a>
+      <div class="content">
+         <h3>cześć, <span>admin</span></h3>
+         <h1>Witaj <span><?php echo $_SESSION['admin_name'] ?></span></h1>
+         <p>to jest strona administracyjna</p>
+         <a href="login_form.php" class="btn">Zaloguj</a>
+         <a href="register_form.php" class="btn">Zarejestruj</a>
+         <a href="logout.php" class="btn">Wyloguj</a>
 
-      <section class="tabela">
-        <h1>Rezerwacje</h1>
-        <!-- TABLE CONSTRUCTION -->
-        <table>
-            <tr>
-                <th>Lokalizacja</th>
-                <th>Data</th>
+         <section class="tabela">
+            <h1>Rezerwacje</h1>
+            <!-- TABLE CONSTRUCTION -->
+            <table>
+               <tr>
+                  <th>Lokalizacja</th>
+                  <th>Data</th>
 
-            </tr>
-            <!-- PHP CODE TO FETCH DATA FROM ROWS -->
-            <?php
-                // LOOP TILL END OF DATA
-                while($rows=$result->fetch_assoc())
-                {
-            ?>
-            <tr>
-                <!-- FETCHING DATA FROM EACH
+               </tr>
+               <!-- PHP CODE TO FETCH DATA FROM ROWS -->
+               <?php
+               // LOOP TILL END OF DATA
+               while ($rows = $result->fetch_assoc()) {
+               ?>
+                  <tr>
+                     <!-- FETCHING DATA FROM EACH
                     ROW OF EVERY COLUMN -->
-                <td><?php echo $rows['location'];?></td>
-                <td><?php echo $rows['date'];?></td>
+                     <td><?php echo $rows['location']; ?></td>
+                     <td><?php echo $rows['date']; ?></td>
 
-            </tr>
-            <?php
-                }
-            ?>
-        </table>
-    </section>
+                  </tr>
+               <?php
+               }
+               ?>
+            </table>
+         </section>
+      </div>
+
+
+
    </div>
 
-   
-
-</div>
-
 </body>
+
 </html>

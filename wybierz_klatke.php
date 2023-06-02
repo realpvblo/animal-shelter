@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Wybierz klatkę</title>
   <style>
@@ -10,10 +11,12 @@
       border: 1px solid #ccc;
       border-radius: 5px;
     }
+
     .form-container label {
       display: block;
       margin-bottom: 10px;
     }
+
     .form-container select {
       width: 100%;
       padding: 10px;
@@ -22,6 +25,7 @@
       box-sizing: border-box;
       margin-bottom: 15px;
     }
+
     .form-container input[type="submit"] {
       background-color: #4CAF50;
       color: #fff;
@@ -32,13 +36,14 @@
     }
   </style>
 </head>
+
 <body>
   <?php
   // Połączenie z bazą danych - należy dostosować do własnych ustawień
   $host = "localhost";
   $dbname = "schronisko";
   $username = "root";
-  $password = "";
+  $password = "root";
 
   try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -62,6 +67,8 @@
       try {
         $stmt->execute();
         echo "Zwierzę zostało przypisane do klatki.";
+        #dodaj linijke php ktora po 3 sekundach przeniesie do admin.php
+        header("refresh:3;url=admin.php");
       } catch (PDOException $e) {
         echo "Błąd podczas przypisywania zwierzęcia do klatki: " . $e->getMessage();
       }
@@ -95,27 +102,29 @@
       } catch (PDOException $e) {
         die("Błąd podczas pobierania klatek: " . $e->getMessage());
       }
+    
       ?>
+          <div class="form-container">
+            <form method="POST" action="">
+              <input type="hidden" name="idzwierzecia" value="<?php echo $idZwierzecia; ?>">
 
-      <div class="form-container">
-        <form method="POST" action="">
-          <input type="hidden" name="idzwierzecia" value="<?php echo $idZwierzecia; ?>">
+              <label for="klatka">Wybierz klatkę:</label>
+              <select name="klatka" required>
+                <?php foreach ($klatki as $klatka) : ?>
+                  <option value="<?php echo $klatka['id']; ?>"><?php echo $klatka['id']; ?></option>
+                <?php endforeach; ?>
+              </select>
 
-          <label for="klatka">Wybierz klatkę:</label>
-          <select name="klatka" required>
-            <?php foreach ($klatki as $klatka) : ?>
-              <option value="<?php echo $klatka['id']; ?>"><?php echo $klatka['id']; ?></option>
-            <?php endforeach; ?>
-          </select>
-
-          <input type="submit" name="submit" value="Przypisz do klatki">
-        </form>
-      </div>
-    <?php
-    } else {
+              <input type="submit" name="submit" value="Przypisz do klatki">
+            </form>
+          </div>
+      <?php
+      }
+    else {
       echo "Nieprawidłowy parametr ID.";
     }
   }
   ?>
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 <?php
 // Połączenie z bazą danych
-$conn = mysqli_connect("localhost", "root", "", "schronisko");
+$conn = mysqli_connect("localhost", "root", "root", "schronisko");
 
 // Sprawdzenie, czy udało się połączyć z bazą danych
 if (!$conn) {

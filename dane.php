@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Przeglądanie danych</title>
   <style>
@@ -8,7 +9,8 @@
       width: 100%;
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 8px;
     }
@@ -23,13 +25,14 @@
     }
   </style>
 </head>
+
 <body>
   <?php
   // Połączenie z bazą danych - należy dostosować do własnych ustawień
   $host = "localhost";
   $dbname = "schronisko";
   $username = "root";
-  $password = "";
+  $password = "root";
 
   try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -81,4 +84,5 @@
     <?php endforeach; ?>
   </table>
 </body>
+
 </html>

@@ -84,7 +84,7 @@
   $host = "localhost";
   $dbname = "schronisko";
   $username = "root";
-  $password = "";
+  $password = "root";
 
   try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

@@ -2,8 +2,8 @@
 // Połączenie z bazą danych - należy dostosować poniższe dane do swojej konfiguracji
 $host = 'localhost';
 $dbUsername = 'root';
-$dbPassword = '';
-$database = 'dane';
+$dbPassword = 'root';
+$database = 'schronisko';
 
 $conn = mysqli_connect($host, $dbUsername, $dbPassword, $database);
 

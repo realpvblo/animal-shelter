@@ -3,7 +3,7 @@
 $host = "localhost";
 $dbname = "schronisko";
 $username = "root";
-$password = "";
+$password = "root";
 
 try {
   $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -28,3 +28,4 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     die("Błąd podczas pobierania opisu: " . $e->getMessage());
   }
 }
+?>

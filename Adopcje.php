@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Przeglądanie danych</title>
+
+  <link href="assets/css/font-awesome.css" rel="stylesheet" />
+  <!-- CUSTOM STYLES-->
+  <link href="assets/css/custom.css" rel="stylesheet" />
+  <!-- GOOGLE FONTS-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/style.css">
+
   <style>
     table {
       border-collapse: collapse;
       width: 100%;
     }
 
-    th, td {
+    th,
+    td {
       text-align: left;
       padding: 8px;
     }
@@ -51,13 +70,43 @@
     }
   </style>
 </head>
+
 <body>
+
+  <div class="wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-md-end">
+          <div class="social-media">
+            <p class="mb-0 d-flex">
+              <!-- login -->
+              <a href="#" class="d-flex align-items-center justify-content-center"></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#"><span class="flaticon-pawprint-1 mr-2"></span>Panel Admina</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="admin.php" class="nav-link">Powrót do panelu</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <?php
   // Połączenie z bazą danych - należy dostosować do własnych ustawień
   $host = "localhost";
   $dbname = "schronisko";
   $username = "root";
-  $password = "";
+  $password = "root";
 
   try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -151,4 +200,5 @@
     }
   </script>
 </body>
+
 </html>

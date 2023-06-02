@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Dodaj zwierzę</title>
   <style>
@@ -12,10 +13,12 @@
       border-radius: 5px;
       margin-top: 5px;
     }
+
     .form-container label {
       display: block;
       margin-bottom: 10px;
     }
+
     .form-container input[type="text"],
     .form-container select,
     .form-container textarea {
@@ -26,6 +29,7 @@
       box-sizing: border-box;
       margin-bottom: 15px;
     }
+
     .form-container input[type="submit"] {
       background-color: #4CAF50;
       color: #fff;
@@ -55,40 +59,41 @@
 </head>
 
 <body>
-<div class="wrap">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-							<!-- login -->
-							<a href="login.php" class="d-flex align-items-center justify-content-center"></a>
-			    		</p>
-		        </div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>Panel Admina</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="fa fa-bars"></span> Menu
-	      </button>
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="admin.php" class="nav-link">Powrót do panelu</a></li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
+  <div class="wrap">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 d-flex justify-content-md-end">
+          <div class="social-media">
+            <p class="mb-0 d-flex">
+              <!-- login -->
+              <a href="login.php" class="d-flex align-items-center justify-content-center"></a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>Panel Admina</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="fa fa-bars"></span> Menu
+      </button>
+      <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item"><a href="admin.php" class="nav-link">Powrót do panelu</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </div>
   <?php
 
   // Połączenie z bazą danych - należy dostosować do własnych ustawień
   $host = "localhost";
   $dbname = "schronisko";
   $username = "root";
-  $password = "";
+  $password = "root";
 
   try {
     $db = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
@@ -196,4 +201,5 @@
     </div>
   </div>
 </body>
+
 </html>

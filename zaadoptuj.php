@@ -174,7 +174,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         // Połączenie z bazą danych - należy dostosować poniższe dane do swojej konfiguracji
         $host = 'localhost';
         $username = 'root';
-        $password = '';
+        $password = 'root';
         $database = 'schronisko';
 
         $conn = mysqli_connect($host, $username, $password, $database);

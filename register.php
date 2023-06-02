@@ -1,6 +1,6 @@
 <?php
 // Connect to the database
-$db = new mysqli('localhost', 'root', '', 'schronisko');
+$db = new mysqli('localhost', 'root', 'root', 'schronisko');
 
 // Check for a successful connection
 if ($db->connect_error) {

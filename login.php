@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $error = "Username or Password is invalid";
   } else {
     // Connect to the database
-    $db = mysqli_connect('localhost', 'root', '', 'schronisko');
+    $db = mysqli_connect('localhost', 'root', 'root', 'schronisko');
 
     // Check if the user exists in the database
     $query = "SELECT * FROM users WHERE username='$username' AND password='$password' AND email = '$email'";
