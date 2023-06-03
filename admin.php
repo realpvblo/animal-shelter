@@ -49,7 +49,7 @@
       </div>
     </div>
   </div>
-  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="z-index:1;">
     <div class="container">
       <a class="navbar-brand" href="#"><span class="flaticon-pawprint-1 mr-2"></span>Panel Admina</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="admin.php" class="nav-link">Powrót do panelu</a></li>
+          <li class="nav-item"><a href="admin.php" class="nav-link" style="z-index: -10;">Witaj Adminie!</a></li>
         </ul>
       </div>
     </div>

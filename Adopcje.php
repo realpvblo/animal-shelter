@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Przeglądanie danych</title>
+  <title>Przegląd wniosków</title>
 
   <link href="assets/css/font-awesome.css" rel="stylesheet" />
   <!-- CUSTOM STYLES-->
@@ -21,9 +21,15 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f1f1;
+    }
+
     table {
       border-collapse: collapse;
       width: 100%;
+      margin-top: 50px;
     }
 
     th,
@@ -38,12 +44,17 @@
     }
 
     tr:nth-child(even) {
-      background-color: #f2f2f2;
+      background-color: white;
+    }
+
+    td img {
+      border-radius: 15%;
     }
 
     .action-buttons {
       display: flex;
       align-items: center;
+      margin: 25% 0;
     }
 
     .action-button {
@@ -67,6 +78,14 @@
     .description-button {
       background-color: #008CBA;
       color: white;
+    }
+
+    .status-approved {
+      color: green;
+    }
+
+    .status-rejected {
+      color: red;
     }
   </style>
 </head>
@@ -116,7 +135,7 @@
   }
 
   // Pobranie danych z tabeli "dane" wraz z odpowiadającymi im zdjęciami psów z tabeli "zwierzeta"
-  $query = "SELECT dane.*, zwierzeta.zdjecie FROM dane LEFT JOIN zwierzeta ON dane.idzwierzecia = zwierzeta.id";
+  $query = "SELECT dane.*, zwierzeta.zdjecie FROM dane LEFT JOIN zwierzeta ON dane.id = zwierzeta.id";
   $stmt = $db->prepare($query);
 
   try {
@@ -155,14 +174,25 @@
         <td><?php echo $row['dochod']; ?></td>
         <td><?php echo $row['idzwierzecia']; ?></td>
         <td><?php echo $row['opis']; ?></td>
-        <td><?php echo $row['status']; ?></td>
+
+        <td class="
+          <?php
+          if ($row['status'] === 'zatwierdzony') {
+            echo 'status-approved';
+          } elseif ($row['status'] === 'odrzucony') {
+            echo 'status-rejected';
+          }
+          ?>
+          "><?php echo $row['status']; ?>
+        </td>
+
         <td>
           <?php if ($row['zdjecie']) : ?>
             <img src="<?php echo $row['zdjecie']; ?>" alt="Zdjęcie zwierzęcia" width="100">
           <?php endif; ?>
         </td>
         <td class="action-buttons">
-          <button class="action-button description-button" onclick="showDescription(<?php echo $row['id']; ?>)">Opis</button>
+          <button class="btn btn-outline-primary" onclick="showDescription(<?php echo $row['idzwierzecia']; ?>)">Opis</button>
         </td>
       </tr>
     <?php endforeach; ?>
@@ -185,18 +215,8 @@
       xhttp.send("id=" + id + "&status=" + status);
     }
 
-    function showDescription(id) {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          var modal = document.getElementById("description-modal");
-          var content = document.getElementById("description-content");
-          content.innerHTML = this.responseText;
-          modal.style.display = "block";
-        }
-      };
-      xhttp.open("GET", "get_description.php?id=" + id, true);
-      xhttp.send();
+    function showDescription(idzwierzecia) {
+      window.location.href = "adopcjeOpis.php?idzwierzecia=" + idzwierzecia;
     }
   </script>
 </body>
