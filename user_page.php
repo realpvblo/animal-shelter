@@ -1,4 +1,30 @@
-﻿<!DOCTYPE html>
+<?php
+session_start();
+$db = new mysqli('localhost', 'root', 'root', 'schronisko');
+
+// Check if the user is logged in
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+  // Retrieve the username from the database
+//   $id = $_SESSION["id"];
+  $query = "SELECT username FROM users WHERE id = ?";
+  $stmt = $db->prepare($query);
+  $stmt->bind_param("i", $id);
+  $stmt->execute();
+  $stmt->store_result();
+  
+  // Check if a row was returned
+  if ($stmt->num_rows == 1) {
+    $stmt->bind_result($username);
+    $stmt->fetch();
+  }
+  $stmt->close();
+}
+
+$db->close();
+?>
+
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
@@ -77,7 +103,10 @@
       <div class="row">
         <div class="col-lg-12 ">
           <div class="alert alert-info">
-            <strong>Witaj Adminie! </strong>
+          <?php
+                // session_start(); 
+                echo "<p> Witaj ".$_SESSION['username'].'! </p>';
+                ?>
           </div>
 
         </div>
@@ -91,35 +120,14 @@
               <h4 style="font-size: 20px">Strona główna</h4>
             </a>
           </div>
+         </div>
 
 
-        </div>
-
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-          <div class="div-square">
-            <a href="dodajzwierze.php">
-              <i class="fa fa-plus fa-5x"></i>
-              <h4 style="font-size: 20px">Dodaj zwierzę</h4>
-            </a>
-          </div>
-
-
-        </div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
           <div class="div-square">
             <a href="zaadoptuj.php">
               <i class="fa fa-heart-o fa-5x"></i>
               <h4 style="font-size: 20px">Zaadoptuj</h4>
-            </a>
-          </div>
-
-
-        </div>
-        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-          <div class="div-square">
-            <a href="usunzwierze.php">
-              <i class="fa fa-times fa-5x"></i>
-              <h4 style="font-size: 20px">Usuń Zwierzę</h4>
             </a>
           </div>
 
@@ -133,17 +141,8 @@
             </a>
           </div>
 
-
-        </div>
+</div>
         <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
-          <div class="div-square">
-            <a href="adopcje.php">
-              <i class="fa fa-list-ul fa-5x"></i>
-              <h4 style="font-size: 20px">Adopcje</h4>
-            </a>
-          </div>
-
-          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
           <div class="div-square">
             <a href="logout.php">
               <i class="fa fa-sign-out fa-5x"></i>
@@ -151,6 +150,7 @@
             </a>
           </div>
         </div>
+        
 
           <!-- /. ROW  -->
 

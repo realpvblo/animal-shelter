@@ -4,21 +4,22 @@ session_start();
 // Sprawdzanie czy użytkownik jest zalogowany
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
   // Jeśli zalogowany jako admin
-  if ($_SESSION["type"] == "admin") {
+  if ($_SESSION["type"] == "Admin") {
     header("location: admin.php");
+    exit;
   }
   // Jeśli zalogowany jako user
   elseif ($_SESSION["type"] == "user") {
-    header("location: index.php");
+    header("location: user_page.php");
+    exit;
   }
-  exit;
 }
 
 // Wylogowywanie użytkownika
 if (isset($_GET["action"]) && $_GET["action"] == "logout") {
   session_unset();
   session_destroy();
-  header("location: index.php");
+  header("location: index.html");
   exit;
 }
 
@@ -30,7 +31,6 @@ if (isset($_POST['submit'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
   $email = $_POST['email'];
-  $type = $_POST['type'];
 
   // Validate the form data
   if (empty($username) || empty($password) || empty($email)) {
@@ -45,35 +45,38 @@ if (isset($_POST['submit'])) {
     $num_rows = mysqli_num_rows($result);
 
     if ($num_rows == 1) {
-      // Start a new session and store the username in a session variable
-      session_start();
+      // Start a new session and store the user details in session variables
+      $user = mysqli_fetch_assoc($result);
+      // session_start();
       $_SESSION["loggedin"] = true;
-      $_SESSION["username"] = $username;
-      $_SESSION["email"] = $email;
-      $_SESSION["type"] = $type;
-      header("location: welcome.php");
+      $_SESSION["username"] = $user['username'];
+      $_SESSION["email"] = $user['email'];
+      $_SESSION["type"] = $user['type'];
+
+      // Redirect the user to the appropriate page based on their type
+      if ($_SESSION["type"] == "Admin") {
+        header("location: admin.php");
+        exit;
+      } elseif ($_SESSION["type"] == "user") {
+        header("location: user_page.php");
+        exit;
+      }
     } else {
       $error = "Username or Password is invalid";
     }
   }
 }
-
 ?>
 
+
 <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" href="css/animate.css">
-
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
 <link rel="stylesheet" href="css/magnific-popup.css">
-
-
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="css/jquery.timepicker.css">
-
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 
@@ -195,19 +198,6 @@ if (isset($_POST['submit'])) {
   </nav>
 
   <div class="container" id="container">
-    <!-- <div class="form-container sign-up-container">
-		<form action="#">
-			<h1>Stwórz konto</h1>
-			<span>or use your email for registration</span>
-			<label for="username">Username:</label><br>
-      <input type="text" name="username" placeholder="Name" ><br>
-      <input type="email" name="email" placeholder="Email" />
-      <label for="password">Password:</label><br>
-      <input type="password" name="password" placeholder="Password"><br><br>
-      <input type="submit" name="submit" value="Submit">
-			<button>Stwórz konto</button>
-		</form>
-	</div> -->
     <div class="form-container sign-in-container">
       <form method="post" action="login.php">
         <h1>Zaloguj się</h1>
@@ -218,18 +208,13 @@ if (isset($_POST['submit'])) {
           <input type="password" name="password" placeholder="Hasło" />
         </div>
         <a href="#">Zapomniałeś hasła?</a>
-        <!-- <button> <input type="submit" name="submit" Zaloguj się ></button> -->
         <input type="submit" name="submit" value="Zaloguj się">
       </form>
     </div>
-
   </div>
 
 </body>
 
-<!-- <script src="login.js"></script> -->
-
-<!-- Display an error message, if one exists -->
 <?php if (isset($error)) {
   echo $error;
 } ?>
